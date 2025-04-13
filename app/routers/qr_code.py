@@ -37,7 +37,7 @@ async def create_qr_code(request: QRCodeRequest, token: str = Depends(oauth2_sch
     # Generate HATEOAS (Hypermedia As The Engine Of Application State) links for this resource
     links = generate_links("create", qr_filename, SERVER_BASE_URL, qr_code_download_url)
 
-    # Check if the QR code already exists to prevent duplicates
+    
     if qr_code_full_path.exists():
         logging.info("QR code already exists.")
         # If it exists, return a conflict response
@@ -47,7 +47,7 @@ async def create_qr_code(request: QRCodeRequest, token: str = Depends(oauth2_sch
         )
 
 
-    # Generate the QR code if it does not exist
+    
     generate_qr_code(request.url, qr_code_full_path, FILL_COLOR, BACK_COLOR, request.size)
     # Return a response indicating successful creation
     return QRCodeResponse(message="QR code created successfully.", qr_code_url=qr_code_download_url, links=links)
