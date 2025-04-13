@@ -41,7 +41,7 @@ async def test_create_and_delete_qr_code():
 
         # Create a QR code
         qr_request = {
-            "url": "https://example.com",
+            "url": "https://www.google.com",
             "fill_color": "red",
             "back_color": "white",
             "size": 10,
